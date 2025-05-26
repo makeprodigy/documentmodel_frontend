@@ -1,54 +1,114 @@
-# React + TypeScript + Vite
+# Document Management Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack application for managing documents and asking AI-powered questions about them.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This portal allows users to:
+- Register and log in securely
+- Upload, view, and delete documents (PDF)
+- Ask AI-powered questions about uploaded documents using Google's Gemini API
+- Enjoy a modern, responsive UI built with Material-UI
 
-## Expanding the ESLint configuration
+## Tech Stack Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Frontend:** React, Vite, Material-UI
+- **Backend:** Django, Django REST Framework
+- **AI:** Google Gemini API
+- **Authentication:** JWT
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Steps to Run Locally
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend Setup
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Create a `.env` file in the backend directory with:
+   ```env
+   DJANGO_SECRET_KEY=your-secret-key-here
+   GEMINI_API_KEY=your-gemini-api-key-here
+   DEBUG=True
+   ALLOWED_HOSTS=localhost,127.0.0.1
+   ```
+5. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```
+6. Start the development server:
+   ```bash
+   python manage.py runserver
+   ```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the frontend directory with:
+   ```env
+   VITE_API_URL=http://localhost:8000/api
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. Register a new account or login with existing credentials
+   (
+   use these credentials if needed
+   username : user
+   email: user@email.com
+   password: user@1234
+   )
+2. Upload documents from the dashboard
+3. View your uploaded documents
+4. Select a document and ask questions about it
+5. Get AI-powered answers based on the document content
+
+## Hosting Links
+
+- **Frontend (Live):** [https://documentmodel-frontend.vercel.app/](https://documentmodel-frontend.vercel.app/)
+- **Backend (Live):** [https://documentmodel-backend.onrender.com](https://documentmodel-backend.onrender.com)
+  - **Note:** If you see a 404 at the root, use [https://documentmodel-backend.onrender.com/api/](https://documentmodel-backend.onrender.com/api/) for API endpoints.
+- **Frontend GitHub:** [https://github.com/makeprodigy/documentmodel_frontend.git](https://github.com/makeprodigy/documentmodel_frontend.git)
+- **Backend GitHub:** [https://github.com/makeprodigy/documentmodel_backend.git](https://github.com/makeprodigy/documentmodel_backend.git)
+
+## Development (for local development)
+
+- Backend API runs on: http://localhost:8000
+- Frontend development server runs on: http://localhost:5173
+
+## Deployment
+
+### Backend Deployment (Render.com)
+1. Create a new Web Service on Render
+2. Connect your GitHub repository
+3. Set environment variables in Render dashboard
+4. Deploy
+
+### Frontend Deployment (Vercel)
+1. Connect your GitHub repository to Vercel
+2. Set the environment variable `VITE_API_URL` to your backend API URL (e.g., https://documentmodel-backend.onrender.com/api/)
+3. Deploy
+
+## License
+
+MIT 
