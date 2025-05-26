@@ -127,7 +127,7 @@ function Dashboard() {
     setError('');
     try {
       const newQuestion = await askQuestion(selectedDocument.id, question);
-      setQuestions([...questions, newQuestion]);
+      setQuestions([newQuestion, ...questions]);
       setQuestion('');
     } catch (error) {
       setError(error.detail || 'Failed to get answer');
