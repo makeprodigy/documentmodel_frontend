@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import './App.css';
 
+/* just a comment */
 function App() {
   const isAuthenticated = () => {
     return localStorage.getItem('token') !== null;
