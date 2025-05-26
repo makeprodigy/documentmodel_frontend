@@ -74,6 +74,9 @@
   border-radius: var(--radius-lg);
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-md);
+  max-height: 80vh;
+  overflow-y: auto;
+  min-height: 350px;
 }
 
 /* Header Styles */
@@ -233,7 +236,9 @@
 
 /* File Upload Section */
 .file-upload-section {
+  min-height: 350px;
   height: 100%;
+  max-height: 50vh;
   display: flex;
   flex-direction: column;
 }
